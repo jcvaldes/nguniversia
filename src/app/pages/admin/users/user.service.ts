@@ -26,13 +26,7 @@ export class UserService {
   getUsers(role: string) {
     return new Promise((resolve, reject) => {
       let userDoc;
-      if (role === 'admin') {
-        userDoc = this.afs.firestore.collection(`admins`);
-      } else if (role === 'teacher') {
-        userDoc = this.afs.firestore.collection(`teachers`);
-      } else if (role === 'student') {
-        userDoc = this.afs.firestore.collection(`teachers`);
-      }
+      userDoc = this.afs.firestore.collection(`users`);
       userDoc.get().then((querySnapshot) => {
         let users: User[] = [];
         querySnapshot.forEach((doc) => {

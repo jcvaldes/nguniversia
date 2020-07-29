@@ -2,12 +2,13 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Input }
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../auth/auth.service';
+
 import { Course } from '../../../../models/course.model';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { User } from '../../../../models/user.model';
+import { CourseService } from '../course.service';
 @Component({
   selector: 'app-curso-alta',
   templateUrl: './curso-alta.component.html',
@@ -19,9 +20,9 @@ export class CursoAltaComponent implements OnInit {
   form: FormGroup;
   constructor(
     private router: Router,
-    private authService: AuthService,
+    private courseService: CourseService,
     private storage: AngularFireStorage
-  ){
+  ) {
     this.createFormGroup();
   }
 
@@ -29,23 +30,17 @@ export class CursoAltaComponent implements OnInit {
 
   }
   onSubmit() {
-    const payload: Course = this.form.value;
-    this.authService.registerUser(payload).then(user => {
-      this.authService.isAuth().subscribe(course => {
-        if (course) {
-
-            Swal.fire({
-              title: 'Atención',
-              text: 'El curso ha sido guardado',
-              icon: 'success',
-              showConfirmButton: true,
-              timer: 2000,
-              animation: true,
-            });
-            this.router.navigate(['/courses/list']);
-
-        }
+    const payload: Course = {teacher: this.teacher.uid, ...this.form.value};
+    this.courseService.saveCourse(payload).then(data => {
+      Swal.fire({
+        title: 'Atención',
+        text: 'El curso ha sido guardado',
+        icon: 'success',
+        showConfirmButton: true,
+        timer: 2000,
+        animation: true,
       });
+      this.router.navigate(['/courses/list']);
     }).catch(err => {
       Swal.fire(
         'Error',

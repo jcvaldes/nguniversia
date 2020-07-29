@@ -17,7 +17,7 @@
     <div class="col-12 col-md-8">
       <app-usuario-tabla role="teacher" (userEdited)="handleEdit($event)"></app-usuario-tabla>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4" *ngIf="teacher">
       <form [formGroup]="form" class="normal-form mt-3" (ngSubmit)="onSubmit()">
         <input type="hidden" formControlName="id" />
         <div class="row my-6">

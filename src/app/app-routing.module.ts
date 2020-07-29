@@ -10,6 +10,7 @@ import { CursoTablaComponent } from './pages/admin/courses/curso-tabla/curso-tab
 import { CursoAltaComponent } from './pages/admin/courses/curso-alta/curso-alta.component';
 import { CursoListadoComponent } from './pages/admin/courses/curso-listado/curso-listado.component';
 import { UsuarioListadoComponent } from './pages/admin/users/usuario-listado/usuario-listado.component';
+import { AdminGuard } from './services/guards/admin.guard';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {
     path: 'users',
+    canActivate: [AdminGuard],
     children: [{
       path: 'new',
       component: UsuarioAltaComponent,

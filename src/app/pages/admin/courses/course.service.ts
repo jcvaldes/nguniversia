@@ -21,7 +21,7 @@ export class CourseService {
 
   getCourses() {
     return new Promise((resolve, reject) => {
-      let courseDoc = this.afs.firestore.collection(`courses`);
+      let courseDoc = this.afs.firestore.collection('courses');
       courseDoc.get().then((querySnapshot) => {
         let courses: Course[] = [];
         querySnapshot.forEach((doc) => {
@@ -39,7 +39,9 @@ export class CourseService {
       }).catch(err => reject);
     });
   }
-
+  saveCourse(course: Course): Promise<void> {
+    return this.afs.collection('courses').doc(this.afs.createId()).set(course);
+  }
   getCollection(collection: string) {
     return new Promise((resolve, reject) => {
       this.afs.collection(collection).valueChanges().subscribe(data => resolve(data), err => reject(err));
