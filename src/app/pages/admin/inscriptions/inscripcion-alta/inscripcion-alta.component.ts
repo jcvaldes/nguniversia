@@ -38,7 +38,7 @@ export class InscripcionAltaComponent implements OnInit {
         Swal.fire({
           title: 'Atención',
           text: 'El alumno ha sido inscripto en la materia',
-          icon: 'success',
+          icon: 'error',
           showConfirmButton: true,
           timer: 2000,
           animation: true,
