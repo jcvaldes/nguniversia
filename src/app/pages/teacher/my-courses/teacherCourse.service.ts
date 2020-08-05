@@ -18,7 +18,7 @@ export class TeacherCourseService {
   constructor(
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   getCourses(): Observable<Course[]> {

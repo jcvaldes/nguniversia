@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { Course } from '../../../../models/course.model';
-import { TeacherCourseService } from '../teacherCourseService.service';
+import { TeacherCourseService } from '../teacherCourse.service';
 import { Observable } from 'rxjs';
 import { UsuarioTablaComponent } from '../../../admin/users/usuario-tabla/usuario-tabla.component';
 
@@ -27,11 +27,9 @@ export class MyCoursesComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private teacherCourseService: TeacherCourseService
-  ) {
-  }
-  async ngOnInit() {
+  ) {}
+  ngOnInit() {
     this.teacherCourseService.getCourses().subscribe(courses => {
-      debugger
       this.courses = courses;
     });
   }
