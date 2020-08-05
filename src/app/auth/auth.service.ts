@@ -17,8 +17,9 @@ export class AuthService {
   token: string;
   constructor(
     private router: Router,
-    public afAuth: AngularFireAuth, public afs: AngularFirestore) {
-    this.loadStorage();
+    public afAuth: AngularFireAuth,
+    public afs: AngularFirestore) {
+      this.loadStorage();
   }
 
   logoutUser() {
@@ -95,8 +96,6 @@ export class AuthService {
             this.saveStorage(this.token, this.user)
             resolve(userData);
           });
-
-
         }, err => reject(err)).catch(e => reject(e));
     });
   }
