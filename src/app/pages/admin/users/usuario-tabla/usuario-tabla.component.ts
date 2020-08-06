@@ -43,7 +43,6 @@ export class UsuarioTablaComponent implements OnInit, OnChanges {
     private userService: UserService,
 
   ) {
-    debugger
     if (this.router.url === '/courses/new' || this.router.url === '/exams/new') {
       this.showAddRemove = true;
     }
