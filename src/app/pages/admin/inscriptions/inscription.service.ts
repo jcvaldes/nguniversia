@@ -40,11 +40,10 @@ export class InscriptionService {
       });
     }
   }
-  getStudentsInscripted(courseId) {
+  getStudentsInscripted(courseId: string) {
     return this.afs
-      .collection('inscriptions')
-      .doc(courseId)
-      .collection('items')
+      .collection('inscriptions', ref => ref.where('courseId', '==', courseId.toString()))
+
       .snapshotChanges()
       .pipe(
         map((docData: any) => {
