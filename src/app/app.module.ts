@@ -17,9 +17,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './auth/register/register.component';
 
-
-import { InscriptionComponent } from './pages/student/inscription/inscription.component';
-
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -46,6 +43,7 @@ import { ListadoNodirectaComponent } from './pages/teacher/actas-exam/listado-no
 import { ListadoExamsComponent } from './pages/teacher/actas-exam/listado-exams/listado-exam.component';
 import { AprobadoPipe } from './pipes/aprobado.pipe';
 import { StudentsDeletedComponent } from './pages/admin/students-deleted/students-deleted.component';
+import { MyExamsComponent } from './pages/student/my-exams/my-exams.component';
 
 
 @NgModule({
@@ -61,7 +59,6 @@ import { StudentsDeletedComponent } from './pages/admin/students-deleted/student
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-    InscriptionComponent,
 
     ExamenAltaComponent,
     MyCoursesComponent,
@@ -85,6 +82,7 @@ import { StudentsDeletedComponent } from './pages/admin/students-deleted/student
     ListadoNodirectaComponent,
     ListadoExamsComponent,
     StudentsDeletedComponent,
+    MyExamsComponent,
   ],
   imports: [
     BrowserModule,

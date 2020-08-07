@@ -20,6 +20,7 @@ import { MyCoursesComponent } from './pages/teacher/my-courses/mycourses.compone
 import { ActasExamComponent } from './pages/teacher/actas-exam/actas-exam.component';
 import { StudentGuard } from './services/guards/student.guard';
 import { StudentsDeletedComponent } from './pages/admin/students-deleted/students-deleted.component';
+import { MyExamsComponent } from './pages/student/my-exams/my-exams.component';
 
 
 const routes: Routes = [
@@ -68,6 +69,9 @@ const routes: Routes = [
     children: [{
       path: 'inscription',
       component: InscripcionAltaComponent,
+    }, {
+      path: 'my-exams',
+      component: MyExamsComponent,
     }],
   }, {
     path: 'my-courses',

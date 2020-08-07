@@ -25,7 +25,10 @@ export class InscriptionService {
     if (this.validarCupos(inscription.course)) {
       inscription.course.capacity -= 1;
       this.afs.collection('courses').doc(inscription.course.uid).set(inscription.course);
-      return this.afs.collection('inscriptions').doc(inscription.course.uid).collection('items').add(inscription.student);
+      // return this.afs.collection('inscriptions').doc(inscription.course.uid).collection('items').add(inscription.student);
+      // tslint:disable-next-line: max-line-length
+      return this.afs.collection('inscriptions').add({ ...inscription.student, courseId: inscription.course.uid });
+
     } else {
       Swal.fire({
         title: 'Atención',

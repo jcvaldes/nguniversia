@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   createFormGroup(): void {
     this.form = new FormGroup({
-      email: new FormControl('idevkingos@gmail.com', Validators.required),
+      email: new FormControl(null, Validators.required),
       password: new FormControl('123456', Validators.required),
     });
   }

@@ -63,6 +63,14 @@
             <a class="dropdown-item" routerLink="/students/inscription">Alta</a>
           </div>
         </li>
+        <li class="nav-item mx-0 mx-lg-1 dropdown" *ngIf="authService.user.role === 'student'">
+          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="mnuMyExams" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Exámenes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="mnuMyExams">
+            <a class="dropdown-item" routerLink="/students/my-exams">Mis Exámenes</a>
+          </div>
+        </li>
         <li class="nav-item mx-0 mx-lg-1 dropdown" *ngIf="authService.user.role === 'teacher'">
           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="mnuExamns" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Exámenes
